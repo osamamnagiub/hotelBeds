@@ -1,0 +1,65 @@
+<!-- Portfolio Item Heading -->
+<h1 class="my-4">{{selectedItem?.name?.content}}
+  <small>Ranking : {{selectedItem?.ranking}}</small>
+</h1>
+
+<!-- Portfolio Item Row -->
+<div class="row" *ngIf="selectedItem">
+
+  <div class="col-md-8" >
+    <carousel >
+      <slide *ngFor="let item of selectedItem.images">
+        <img src="http://photos.hotelbeds.com/giata/{{item?.path}}"  alt="first slide" style="display: block; width: 100%; height: 300px;">
+      </slide>
+     
+    </carousel>
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="my-3">Hotel Description</h3>
+    <p>{{selectedItem.description?.content}}</p>
+   
+  </div>
+
+  
+
+</div>
+<!-- /.row -->
+
+<!-- Related Projects Row -->
+<h3 class="my-4">Hotel Details</h3>
+
+<div class="row" *ngIf="selectedItem">
+
+  <div class="col-md-4">
+    <h3 class="my-3">Facilities</h3>
+    <ul>
+      <li *ngFor="let item of selectedItem.facilities">{{item.description?.content}} {{item.number ? ': ' + item.number : ''}}</li>
+    </ul>
+  </div>
+ 
+  <div class="col-md-4">
+    <h3 class="my-3">Location</h3>
+    <ul>
+      <li>Address : {{selectedItem.address?.content}}</li>
+      <li>Country : {{selectedItem.country?.description?.content}}</li>
+      <li>State : {{selectedItem.state?.name}}</li>
+      <li>Area : {{selectedItem.destination?.name?.content}}</li>
+      <li>Zone : {{selectedItem.zone?.description?.content}}</li>
+
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="my-3">Contacts</h3>
+    <ul>
+      <li>WebSite : {{selectedItem.web}}</li>
+      <li>Email : {{selectedItem.email}}</li>
+      <li *ngFor="let item of selectedItem.phones">Phone : {{item?.phoneNumber}}</li>
+
+    </ul>
+  </div>
+ 
+
+</div>
+<!-- /.row -->
